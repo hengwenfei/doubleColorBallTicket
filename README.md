@@ -32,3 +32,17 @@ date,red1,red2,red3,red4,red5,red6,blue
 ```powershell
 py -m unittest -v
 ```
+
+## 打包 Windows 安装程序
+
+在 Windows 上安装 Python 3（需包含 `venv`）和 [Inno Setup 6](https://jrsoftware.org/isinfo.php)，在项目目录运行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+```
+
+脚本会在 `.build-venv` 中安装 PyInstaller，并在 `dist` 目录生成独立 exe 和 `双色球选号工具-Setup.exe` 安装程序。首次打包需要联网下载 PyInstaller。只生成 exe（不需要安装 Inno Setup）：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -ExeOnly
+```
